@@ -11,6 +11,7 @@ tasks:
 ports:
   - port: 3000
     onOpen: open-preview
+  - port: 6080
 
 # Gitpod requires Vscode SpringBoot plugin.
 vscode:
