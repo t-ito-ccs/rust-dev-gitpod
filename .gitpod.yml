@@ -1,0 +1,20 @@
+# Make docker container.
+image:
+  file: .gitpod.Dockerfile
+
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - init: echo 'init script' # runs during prebuild
+    command: echo 'start script'
+  - name: Database
+    command: psql -h localhost -f ./sql/01_db_create.sql && psql -h localhost -d logindb -U gitpod -f ./sql/02_data_init.sql
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
+
+# Gitpod requires Vscode SpringBoot plugin.
+vscode:
+  extensions:
+    - pivotal.vscode-boot-dev-pack
